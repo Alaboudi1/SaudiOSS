@@ -1246,10 +1246,10 @@
         "name": "Arabic-python-notebook",
         "URL": "https://github.com/AhmadAlsaadi/Arabic-python-notebook",
         "description": "يهدف هذا الكتاب الى توفير محتوى عربي سهل يمكن القارئ من تعلم لغة بايثون بحيث يمكن استخدامه كمادة علمية جامعية تدرس خلال ترم فصلي واحد في احد التخصصات الهندسية"
-      },
-      ]
+      }
+    ]
   },
-       {
+  {
     "name": "هلا وغلا",
     "githubURL": "https://github.com/AhmadAlsaadi",
     "projects": [
