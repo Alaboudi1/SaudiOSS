@@ -41,11 +41,11 @@ const newTemplate = template.replace("<!-- DEVELOPERS LIST -->", readmeContent);
 (async () => {
   try {
     const res = await client.request(
-      "GET /repos/SaudiOpenSourceCommunity/SaudiOSS/contents/README.md"
+      "GET /repos/Alaboudi1/SaudiOSS/blob/master/README.md"
     );
     const { sha, encoding } = res.data;
     client.request(
-      "PUT /repos/SaudiOpenSourceCommunity/SaudiOSS/contents/README.md",
+      "PUT /repos/Alaboudi1/SaudiOSS/blob/master/README.md",
       {
         message: "Update readme.md",
         content: Buffer.from(newTemplate, "utf-8").toString(encoding),
