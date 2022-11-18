@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const octokit = require("@octokit/core");
 
-const client = new octokit.Octokit({ auth: process.env.GITHUB_TOKEN });
+const client = new octokit.Octokit({ auth: process.env.SAUDIOSS });
 const devs = require("./devs.json");
 const template = fs
   .readFileSync(path.resolve(__dirname, "template.md"))
