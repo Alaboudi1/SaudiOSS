@@ -1,40 +1,33 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [ master ]
-    paths:
-      - 'homepage/**'
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
 
 jobs:
-  build:
+  deploy:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      id-token: write
+ 
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v3
-      - name: echoing current directory
+      - name: Setup Node.js and build your site
         run: |
-          pwd
-          ls homepage/
-      - name: Install, build, and upload your site
-        uses: withastro/action@v0
-        with:
-            path: homepage
-            package-manager: npm
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
+          cd homepage
+          npm install
+          npm run build
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v1
+       
+          
+    environment:
+        name: github-pages
+        url: ${{ steps.deploy.outputs.page_url }}
